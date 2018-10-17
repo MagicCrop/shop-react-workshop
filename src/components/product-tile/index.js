@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class ProductTile extends Component {
     render() {
-        //const {subTitle, title, imageUrl, price} = this.props;
+        //const {subTitle, title, imageUrl, price} = this.props; for unwrapping the passed object (need to pass it like {...product})
         const p = this.props.product;
         const [euro, cent] = p.price.split(",");
         return (
