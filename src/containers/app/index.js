@@ -23,15 +23,15 @@ class App extends Component {
             product={product}
             disabledBtn={basket.includes(product)}
             addToBasket={this.addToBasket.bind(this)}
-        />)
+        />);
 
         return (
             <div className="page-wrapper">
-                <Header/>
+                <Header basketSize={basket.length}/>
                 <div className="main">
                     {productElements}
                 </div>
-                <Basket/>
+                <Basket products={basket} removeFromBasket={this.removeFromBasket.bind(this)}/>
                 <div className="footer">
                     <div className="flex-center">Footer</div>
                 </div>
@@ -44,6 +44,12 @@ class App extends Component {
             const tempBasket = state.basket.slice(0);
             tempBasket.push(product);
             return {basket: tempBasket}
+        })
+    }
+
+    removeFromBasket(product) {
+        this.setState((state) => {
+            return {basket: state.basket.filter(p => p !== product)};
         })
     }
 }
